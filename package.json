@@ -1,0 +1,31 @@
+{
+	"name": "imgbed",
+	"version": "1.0.0",
+	"description": "图床 Image web hosting.",
+	"main": "index.js",
+	"scripts": {
+		"start": "node index.js"
+	},
+	"keywords": [
+		"image",
+		"hosting",
+		"simple",
+		"static",
+		"web",
+		"thumbnail",
+		"img",
+		"bed",
+		"server"
+	],
+	"bin": {
+		"imgbed": "./index.js"
+	},
+	"author": "orzv",
+	"license": "MIT",
+	"dependencies": {
+		"image-thumbnail": "^1.0.6",
+		"image-type": "^4.1.0",
+		"micro": "^9.3.4",
+		"mkdirs": "0.0.2"
+	}
+}
