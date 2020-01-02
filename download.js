@@ -26,16 +26,18 @@ module.exports = async function (req, res) {
         res.setHeader('Content-Type', mime)
 
         if (query) {
-            /**
-             * thumbnail
-             */
-            return send(res, 200, await thumbnail(src, {
-                percentage: parseInt(query)
-            }))
+            let options = {}
+            if (/^\d+$/.test(query)) {
+                options.percentage = parseInt(query)
+            }
+            if (/^\d+x\d+$/.test(query)) {
+                let [width, height] = query.split('x')
+                width = parseInt(width), height = parseInt(height)
+                if (width) options.width = width
+                if (height) options.height = height
+            }
+            return send(res, 200, await thumbnail(src, options))
         } else {
-            /**
-             * origin
-             */
             createReadStream(src).pipe(res)
         }
     })

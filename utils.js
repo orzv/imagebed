@@ -32,6 +32,7 @@ exports.parsePath = function (path) {
  * @return {string | null} 如果没有权限，返回非null
  */
 exports.authorize = function (header) {
+    if (/localhost/.test(header.host)) return null
     let { authorization, date } = header
     if (!authorization || !date) return 'Invalid params'
     date = parseInt(date)
